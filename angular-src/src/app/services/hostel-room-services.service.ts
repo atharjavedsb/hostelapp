@@ -14,13 +14,13 @@ export class HostelRoomServicesService {
 
   SaveAllFormRecord(newFormRecord){
     console.log(newFormRecord)
-    return this._http.post('http://localhost:8080/api/roomsave', newFormRecord).pipe(map(res=>res.json()));
+    return this._http.post('api/roomsave', newFormRecord).pipe(map(res=>res.json()));
 
   }
 
  //Get All Record
 getAllRecordB(){
-    return this._http.get('http://localhost:8080/api/getallRecord').pipe(map(res=>res.json()))
+    return this._http.get('api/getallRecord').pipe(map(res=>res.json()))
 }
 
 //Delete Record
@@ -28,7 +28,7 @@ deleteRoomRecord(body:any){
     
   var header = new Headers();
   header.append("Content-Type", "application/json");
-  return this._http.delete('http://localhost:8080/api/deleteRecord',body).pipe(map(res => res.json()));
+  return this._http.delete('api/deleteRecord',body).pipe(map(res => res.json()));
 }
  
 }
