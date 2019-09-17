@@ -1,0 +1,204 @@
+<!-- Loader Animatioin -->
+<!-- <ngx-spinner color="fff" [fullScreen] ="true" type="ball-circus">
+        <p class="text-white" > Reservation form Loading... </p>
+</ngx-spinner> -->
+<!-- End Loader Animation -->
+
+<div class="container-fluid"> 
+    <h2 class="page-header">Dashboard</h2>
+    <p>Welcome to your Dashboard</p>
+    <hr />
+    <div class="row">
+        <div class="col-md-2 mb-3">
+            <ul class="nav nav-pills flex-column" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                        aria-controls="home" aria-selected="true">Room</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                        aria-controls="profile" aria-selected="false">Room Record</a>
+                </li>
+                <!-- <li class="nav-item">
+                        <a class="nav-link" id="bed-tab" data-toggle="tab" href="#bed" role="tab"
+                            aria-controls="bed" aria-selected="false">Bed</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                        aria-controls="contact" aria-selected="false">Gallery</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.col-md-4 -->
+        <div class="col-md-10">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    
+                    <div class="row">
+                            <form [formGroup]="hostelform" class="w-100 mr-auto" (ngSubmit)='addButtonRecord()'>
+                            <div class="row">
+                                <div class="col-sm-6" >   
+                                        <div class="form-group">
+                                                <label for="CandidateName">Candidate Name</label>
+                                                <input required type="text" class="form-control" placeholder="Enter Candidate Name" formControlName="CandidateName"  name="CandidateName">
+                                                <!-- [(ngModel)]="CandidateName" -->
+                                                
+                                                <div *ngIf="CandidateName.touched && CandidateName.invalid" class="alert alert-danger">
+                                                        Please Enter Name
+                                                </div> 
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="CandidateLastName">Last Name</label>
+                                            <input type="CandidateLastName" class="form-control" placeholder="Enter Candidate Last Name" formControlName="CandidateLastName"  name="CandidateLastName">
+                                            <!-- [(ngModel)]="CandidateLastName" -->
+                                            
+                                                <div *ngIf="CandidateLastName.touched && CandidateLastName.invalid" class="alert alert-danger">
+                                                        Please Enter Last Name 
+                                                </div> 
+                                        </div>
+                                            
+                                        <div class="form-group">
+                                                <label for="mobileNo">Mobile No</label>
+                                                <input type="text" class="form-control" placeholder="Enter Mobile number" formControlName="mobileNo" name="mobileNo">
+                                                <!-- [(ngModel)]="mobileNo" -->
+                                                <div *ngIf="mobileNo.touched && mobileNo.invalid" class="alert alert-danger"> 
+                                                                Please Enter Mobile Number
+                                                </div>  
+
+                                        </div>
+
+                                        <div class="form-group">
+                                                <label for="Addressone">Address 1</label>
+                                                <input type="text" class="form-control" placeholder="Enter Address one" formControlName="Addressone" name="Addressone">
+                                                <!-- [(ngModel)]="Addressone" -->
+                                                <div *ngIf="Addressone.touched && Addressone.invalid" class="alert alert-danger"> 
+                                                        Please enter Address one 
+                                                </div>
+
+                                        </div> 
+                                        
+                                        <div class="form-group">
+                                                <label for="Addresstwo">Adress 2 </label>
+                                                <input type="text" class="form-control" placeholder="Enter Address one" formControlName="Addresstwo" name="Addresstwo">
+                                                <!-- [(ngModel)]="Addresstwo" -->
+                                                <div *ngIf="Addresstwo.touched && Addresstwo.invalid" class="alert alert-danger">
+                                                        Please enter Address two
+                                                </div> 
+                                        </div>
+                                </div>  
+
+                               
+                                    
+                                <div class="col-sm-6" >   
+                                        <div class="form-group">
+                                                <label for="floorNumber">Floor Number</label>
+                                                <input type="text" class="form-control" placeholder="Enter Floor No." formControlName="floorNumber" name="floorNumber">
+                                                <!-- [(ngModel)]="floorNumber" -->
+                                                <div *ngIf="floorNumber.touched && floorNumber.invalid" class="alert alert-danger">
+                                                        Please enter floor number  
+                                                </div> 
+                                        </div>     
+                                        <div class="form-group">
+                                                <label for="RoomNo">Room No</label>
+                                                <input type="text" class="form-control" placeholder="Enter RoomNo" formControlName="RoomNo" name="RoomNo">
+                                                <!-- [(ngModel)]="RoomNo" -->
+                                                <div *ngIf="RoomNo.touched && RoomNo.invalid" class="alert alert-danger">
+                                                        please enter RoomNo number  
+                                                </div> 
+
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="RoomasignDate">Room Assiging Date</label>
+                                                <input type="text" class="form-control" placeholder="Room Assiging Date" formControlName="RoomasignDate" name="RoomasignDate">
+                                                <!-- [(ngModel)]="RoomasignDate" -->
+                                                <div *ngIf="RoomasignDate.touched && RoomasignDate.invalid" class="alert alert-danger">
+                                                        please enter date   
+                                                </div> 
+                                                
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="roomRent">Room Rent</label>
+                                                <input type="text" class="form-control" placeholder="Enter Room Rent" formControlName="roomRent" name="roomRent">
+                                                <!-- [(ngModel)]="roomRent" -->
+                                                <div *ngIf="roomRent.touched && roomRent.invalid" class="alert alert-danger">
+                                                        please enter Room Rent   
+                                                </div>
+
+                                        </div>
+                                 </div>   
+                                </div>
+                                    <input class="btn btn-lg btn-primary" type="submit" value="Save Record">
+                            </form>
+                    </div>
+
+                   
+                    
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"> 
+                   
+                </div>
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                    <h2>Gallery</h2>
+                     <img class="w-25" src="../../../assets/img/room1.jpg"/>
+                     <img class="w-25" src="../../../assets/img/room2.jpg"/>
+                     <img class="w-25" src="../../../assets/img/room3.jpg"/>
+                     <img class="w-25" src="../../../assets/img/room4.jpg"/>
+                     <img class="w-25" src="../../../assets/img/room5.jpg"/>
+                     <img class="w-25" src="../../../assets/img/room6.jpg"/>
+
+
+                </div>
+            </div>
+        </div>
+        <!-- /.col-md-8 -->
+    </div>
+
+
+
+</div>
+<div class="row">
+        <div class="container-fluid">
+                <div class="form-group">
+                        <h1 class="text-center mb-3">Hostel Room Record</h1>
+                        <table class="table">
+                            <thead class="text-center">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Last Name *</th>
+                                    <th>Cell#</th>
+                                    <th>Address 1</th>
+                                    <th>Address 2</th>
+                                    <th>Floor #</th>
+                                    <th>Room #</th>
+                                    <th>Room Assign Date</th>
+                                    <th>Room Rent</th>
+                                    <td><b>Actions</b></td>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                <tr *ngFor="let datares of hostelrooms let i=index">
+                                    <td>{{datares.CandidateName}}</td> 
+                                    <td>{{datares.CandidateLastName}}</td>
+                                    <td>{{datares.mobileNo}}</td>
+                                    <td>{{datares.Addressone}}</td>
+                                    <td>{{datares.Addresstwo}}</td>
+                                    <td>{{datares.floorNumber}}</td>
+                                    <td>{{datares.RoomNo}}</td>
+                                    <td>{{datares.RoomasignDate}}</td>
+                                    <td>{{datares.roomRent}}</td>
+                                   
+                                    <td class="d-flex">
+                                        <input type="button" class="btn btn-sm" value="X" (click)=' deleteFromRoom(datares._id)'>
+                                        <input type="button" class="btn btn-sm" value="&#x270f;" (click)='EditHostelRoom(i)'>
+                                        <input type="button" class="btn btn-sm" value="&#xe173;" (click)=' updateReservation(index)'>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                       
+                      
+                    </div>
+        </div>
+</div>
+<!-- /.container -->
