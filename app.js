@@ -8,25 +8,25 @@ const config = require('./config/database');
 const routes = require('./routes/hostelRoutes'); 
  
 // Connect To Database on Local Serve (Config)
-mongoose.connection.openUri('mongodb://localhost:27017/hostelDb',{useNewUrlParser:true});
-mongoose.connection.on('connected',() => {
-    console.log("connected to db")
-})
-mongoose.connection.on('error',(err)=>{
-    if(err){
-        console.log(`Conenction failed ${err}`)
-     }
-}) 
-// Live Connection with MongoDB
-// mongoose.connection.openUri('mongodb+srv://finaldb:athar12345@cluster0-9buak.mongodb.net/test?retryWrites=true&w=majority',{useNewUrlParser:true});
+// mongoose.connection.openUri('mongodb://localhost:27017/hostelDb',{useNewUrlParser:true});
 // mongoose.connection.on('connected',() => {
 //     console.log("connected to db")
 // })
 // mongoose.connection.on('error',(err)=>{
 //     if(err){
 //         console.log(`Conenction failed ${err}`)
-//     }
-// })
+//      }
+// }) 
+// Live Connection with MongoDB
+mongoose.connection.openUri('mongodb+srv://finaldb:athar12345@cluster0-9buak.mongodb.net/test?retryWrites=true&w=majority',{useNewUrlParser:true});
+mongoose.connection.on('connected',() => {
+    console.log("connected to db")
+})
+mongoose.connection.on('error',(err)=>{
+    if(err){
+        console.log(`Conenction failed ${err}`)
+    }
+})
 
 const app = express();
 
